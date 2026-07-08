@@ -1,8 +1,4 @@
-/* =========================================================
-   ForeverWale — shared app.js
-   Theme toggle, navigation, and lightweight auth simulation
-   shared by the homepage and every new page.
-   ========================================================= */
+
 
 (function () {
   "use strict";

@@ -931,6 +931,37 @@ nav.navbar {
   border: 1px solid var(--blush);
   padding: 32px 28px;
   text-align: center;
+  overflow: hidden;
+}
+
+.story-photo {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  margin: -32px -28px 20px;
+  width: calc(100% + 56px);
+  overflow: hidden;
+  border-bottom: 1px solid var(--blush);
+}
+
+.story-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.story-photo--empty {
+  background: var(--blush-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.story-photo--empty::after {
+  content: "❖";
+  color: var(--rose);
+  font-size: 1.6rem;
+  opacity: .5;
 }
 
 .story-card h3 {
