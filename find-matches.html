@@ -27,23 +27,23 @@
     <nav class="navbar wrap">
       <a href="index.html" class="logo">Forever<span>Wale</span></a>
 
-      <button type="button" id="nav-toggle" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <input type="checkbox" id="nav-toggle-cb" class="nav-toggle-cb">
+      <label for="nav-toggle-cb" class="nav-toggle" aria-label="Toggle menu">
         <span></span>
-      </button>
+      </label>
 
-      <ul class="nav-links" id="nav-links">
-        <li><a href="index.html" data-page="home">Home</a></li>
-        <li><a href="find-matches.html" data-page="find-matches">Find Matches</a></li>
-        <li><a href="post-your-details.html" data-page="post-details">Post Your Details</a></li>
-        <li><a href="about-us.html" data-page="about">About Us</a></li>
-        <li><a href="contact-us.html" data-page="contact">Contact Us</a></li>
-        <li data-auth="guest"><a href="signin.html" data-page="signin">Sign In</a></li>
-        <li data-auth="user"><a href="#" id="logout-link">Logout</a></li>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="find-matches.html" class="active">Find Matches</a></li>
+        <li><a href="post-your-details.html">Post Your Details</a></li>
+        <li><a href="about-us.html">About Us</a></li>
+        <li><a href="contact-us.html">Contact Us</a></li>
+        <li><a href="signin.html">Sign In</a></li>
       </ul>
 
       <div class="nav-right">
         <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle light / dark theme">🌙</button>
-        <a href="signup.html" class="btn btn-solid" data-auth="guest">Sign Up</a>
+        <a href="signup.html" class="btn btn-solid">Sign Up</a>
       </div>
     </nav>
   </header>
@@ -60,7 +60,7 @@
   <section>
     <div class="wrap">
 
-      <form class="search-toolbar" id="filters-form">
+      <form class="search-toolbar" id="filters-form" action="#profile-grid" method="get">
         <div class="field search-main">
           <label for="fm-search">Search by name, community, or keyword</label>
           <input type="text" id="fm-search" placeholder="e.g. Riya, Punjabi, Software Engineer">
@@ -121,7 +121,8 @@
             <p class="profile-bio">Loves classical dance and weekend trekking. Looking for a grounded, family-oriented partner.</p>
             <div class="profile-actions">
               <a href="#" class="btn">View Profile</a>
-              <button type="button" class="btn btn-solid js-interest">Interest</button>
+              <input type="checkbox" id="interest-1" class="js-interest-cb">
+              <label for="interest-1" class="btn btn-solid js-interest-label"><span class="label-default">Interest</span><span class="label-sent">Interest sent ✓</span></label>
             </div>
           </div>
         </article>
@@ -137,7 +138,8 @@
             <p class="profile-bio">Enjoys cooking and cricket. Comes from a close-knit nuclear family, values honesty above all.</p>
             <div class="profile-actions">
               <a href="#" class="btn">View Profile</a>
-              <button type="button" class="btn btn-solid js-interest">Interest</button>
+              <input type="checkbox" id="interest-2" class="js-interest-cb">
+              <label for="interest-2" class="btn btn-solid js-interest-label"><span class="label-default">Interest</span><span class="label-sent">Interest sent ✓</span></label>
             </div>
           </div>
         </article>
@@ -153,7 +155,8 @@
             <p class="profile-bio">Passionate about community health work. Seeking someone kind, ambitious, and family-first.</p>
             <div class="profile-actions">
               <a href="#" class="btn">View Profile</a>
-              <button type="button" class="btn btn-solid js-interest">Interest</button>
+              <input type="checkbox" id="interest-3" class="js-interest-cb">
+              <label for="interest-3" class="btn btn-solid js-interest-label"><span class="label-default">Interest</span><span class="label-sent">Interest sent ✓</span></label>
             </div>
           </div>
         </article>
@@ -169,7 +172,8 @@
             <p class="profile-bio">Loves travel photography and quiet weekends. Looking for a warm, communicative partner.</p>
             <div class="profile-actions">
               <a href="#" class="btn">View Profile</a>
-              <button type="button" class="btn btn-solid js-interest">Interest</button>
+              <input type="checkbox" id="interest-4" class="js-interest-cb">
+              <label for="interest-4" class="btn btn-solid js-interest-label"><span class="label-default">Interest</span><span class="label-sent">Interest sent ✓</span></label>
             </div>
           </div>
         </article>
@@ -185,7 +189,8 @@
             <p class="profile-bio">Enjoys sketching and Sunday farmers' markets. Values calm, thoughtful conversation.</p>
             <div class="profile-actions">
               <a href="#" class="btn">View Profile</a>
-              <button type="button" class="btn btn-solid js-interest">Interest</button>
+              <input type="checkbox" id="interest-5" class="js-interest-cb">
+              <label for="interest-5" class="btn btn-solid js-interest-label"><span class="label-default">Interest</span><span class="label-sent">Interest sent ✓</span></label>
             </div>
           </div>
         </article>
@@ -201,7 +206,8 @@
             <p class="profile-bio">Runs a small design studio. Looking for a confident, easygoing partner who loves to laugh.</p>
             <div class="profile-actions">
               <a href="#" class="btn">View Profile</a>
-              <button type="button" class="btn btn-solid js-interest">Interest</button>
+              <input type="checkbox" id="interest-6" class="js-interest-cb">
+              <label for="interest-6" class="btn btn-solid js-interest-label"><span class="label-default">Interest</span><span class="label-sent">Interest sent ✓</span></label>
             </div>
           </div>
         </article>

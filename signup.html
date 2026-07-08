@@ -14,23 +14,23 @@
     <nav class="navbar wrap">
       <a href="index.html" class="logo">Forever<span>Wale</span></a>
 
-      <button type="button" id="nav-toggle" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <input type="checkbox" id="nav-toggle-cb" class="nav-toggle-cb">
+      <label for="nav-toggle-cb" class="nav-toggle" aria-label="Toggle menu">
         <span></span>
-      </button>
+      </label>
 
-      <ul class="nav-links" id="nav-links">
-        <li><a href="index.html" data-page="home">Home</a></li>
-        <li><a href="find-matches.html" data-page="find-matches">Find Matches</a></li>
-        <li><a href="post-your-details.html" data-page="post-details">Post Your Details</a></li>
-        <li><a href="about-us.html" data-page="about">About Us</a></li>
-        <li><a href="contact-us.html" data-page="contact">Contact Us</a></li>
-        <li data-auth="guest"><a href="signin.html" data-page="signin">Sign In</a></li>
-        <li data-auth="user"><a href="#" id="logout-link">Logout</a></li>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="find-matches.html">Find Matches</a></li>
+        <li><a href="post-your-details.html">Post Your Details</a></li>
+        <li><a href="about-us.html">About Us</a></li>
+        <li><a href="contact-us.html">Contact Us</a></li>
+        <li><a href="signin.html">Sign In</a></li>
       </ul>
 
       <div class="nav-right">
         <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle light / dark theme">🌙</button>
-        <a href="signup.html" class="btn btn-solid" data-auth="guest">Sign Up</a>
+        <a href="signup.html" class="btn btn-solid">Sign Up</a>
       </div>
     </nav>
   </header>
@@ -48,37 +48,35 @@
     <div class="auth-wrap">
       <div class="panel auth-card">
 
-        <div class="form-alert" id="signup-alert"></div>
+        <div class="form-alert" id="signup-alert">Account created successfully! You can now sign in.</div>
 
-        <form id="signup-form">
+        <form id="signup-form" action="#signup-alert" method="get">
           <div class="form-grid cols-2" style="margin-bottom:22px;">
             <div class="field full">
               <label for="su-name">Full Name</label>
-              <input type="text" id="su-name" required>
+              <input type="text" id="su-name" name="su-name" required>
             </div>
             <div class="field full">
               <label for="su-email">Email</label>
-              <input type="email" id="su-email" required>
+              <input type="email" id="su-email" name="su-email" required>
             </div>
             <div class="field full">
               <label for="su-mobile">Mobile Number</label>
-              <input type="tel" id="su-mobile" required>
+              <input type="tel" id="su-mobile" name="su-mobile" required>
             </div>
             <div class="field full field-password">
               <label for="su-password">Password</label>
-              <input type="password" id="su-password" minlength="8" required>
-              <button type="button" class="toggle-pass" data-target="su-password">Show</button>
+              <input type="password" id="su-password" name="su-password" minlength="8" required>
               <span class="hint">Minimum 8 characters.</span>
             </div>
             <div class="field full field-password">
               <label for="su-confirm">Confirm Password</label>
-              <input type="password" id="su-confirm" minlength="8" required>
-              <button type="button" class="toggle-pass" data-target="su-confirm">Show</button>
+              <input type="password" id="su-confirm" name="su-confirm" minlength="8" required>
             </div>
           </div>
 
           <label class="check-row">
-            <input type="checkbox" id="su-remember">
+            <input type="checkbox" id="su-remember" name="su-remember">
             Remember me on this device
           </label>
 

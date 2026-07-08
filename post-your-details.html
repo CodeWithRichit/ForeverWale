@@ -14,23 +14,23 @@
     <nav class="navbar wrap">
       <a href="index.html" class="logo">Forever<span>Wale</span></a>
 
-      <button type="button" id="nav-toggle" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <input type="checkbox" id="nav-toggle-cb" class="nav-toggle-cb">
+      <label for="nav-toggle-cb" class="nav-toggle" aria-label="Toggle menu">
         <span></span>
-      </button>
+      </label>
 
-      <ul class="nav-links" id="nav-links">
-        <li><a href="index.html" data-page="home">Home</a></li>
-        <li><a href="find-matches.html" data-page="find-matches">Find Matches</a></li>
-        <li><a href="post-your-details.html" data-page="post-details">Post Your Details</a></li>
-        <li><a href="about-us.html" data-page="about">About Us</a></li>
-        <li><a href="contact-us.html" data-page="contact">Contact Us</a></li>
-        <li data-auth="guest"><a href="signin.html" data-page="signin">Sign In</a></li>
-        <li data-auth="user"><a href="#" id="logout-link">Logout</a></li>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="find-matches.html">Find Matches</a></li>
+        <li><a href="post-your-details.html" class="active">Post Your Details</a></li>
+        <li><a href="about-us.html">About Us</a></li>
+        <li><a href="contact-us.html">Contact Us</a></li>
+        <li><a href="signin.html">Sign In</a></li>
       </ul>
 
       <div class="nav-right">
         <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle light / dark theme">🌙</button>
-        <a href="signup.html" class="btn btn-solid" data-auth="guest">Sign Up</a>
+        <a href="signup.html" class="btn btn-solid">Sign Up</a>
       </div>
     </nav>
   </header>
@@ -48,9 +48,9 @@
     <div class="wrap">
       <div class="panel" style="max-width:960px; margin:0 auto;">
 
-        <div class="form-alert" id="details-alert"></div>
+        <div class="form-alert" id="details-alert">Your profile has been submitted for review. Our team will verify it shortly.</div>
 
-        <form id="details-form">
+        <form id="details-form" action="#details-alert" method="get">
 
           <div class="form-section">
             <h3><span class="tag-num">01</span> Personal Details</h3>
