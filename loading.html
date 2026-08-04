@@ -1,0 +1,173 @@
+
+  <!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="refresh" content="5;url=index.html">
+  <title>ForeverWale — Loading</title>
+
+  <style>
+    :root {
+      --red: #7A1220;
+      --red-deep: #5C0E19;
+      --rose: #C48793;
+      --white: #FFFDFB;
+      --ink: #2B2024;
+      --blush: #EFDCD2;
+      --blush-soft: #F7EEE8;
+    }
+
+    :root[data-theme="dark"] {
+      --red: #E36575;
+      --red-deep: #F0AAB3;
+      --rose: #D9A0AC;
+      --white: #1B1417;
+      --ink: #F3E9E5;
+      --blush: #3A2A2E;
+      --blush-soft: #241B1E;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      color: var(--ink);
+      background: var(--white);
+      font-weight: 300;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .25s ease, color .25s ease;
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid var(--blush);
+      background: none;
+      color: var(--red-deep);
+      cursor: pointer;
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .loader-wrap {
+      text-align: center;
+      padding: 0 32px;
+    }
+
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: var(--red-deep);
+      margin-bottom: 10px;
+    }
+
+    .logo span {
+      color: var(--rose);
+    }
+
+    .eyebrow {
+      font-size: .78rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 44px;
+    }
+
+    .bar-track {
+      width: 280px;
+      max-width: 60vw;
+      height: 4px;
+      background: var(--blush);
+      border-radius: 4px;
+      overflow: hidden;
+      margin: 0 auto;
+    }
+
+    .bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--rose), var(--red));
+      border-radius: 4px;
+      animation: fill 5s linear forwards;
+    }
+
+    @keyframes fill {
+      0% {
+        width: 0%;
+      }
+
+      100% {
+        width: 100%;
+      }
+    }
+
+    .percent {
+      margin-top: 16px;
+      font-size: .8rem;
+      letter-spacing: 1px;
+      color: #9b8a8d;
+    }
+  </style>
+</head>
+
+<body>
+
+  <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle light / dark theme">🌙</button>
+
+  <div class="loader-wrap">
+    <p class="logo">Forever<span>Wale</span></p>
+    <p class="eyebrow">Finding your forever&hellip;</p>
+
+    <div class="bar-track">
+      <div class="bar-fill"></div>
+    </div>
+    <p class="percent">Please wait&hellip;</p>
+  </div>
+
+  <script>
+    (function () {
+      const root = document.documentElement;
+      const toggle = document.getElementById('theme-toggle');
+
+      function applyTheme(theme) {
+        if (theme === 'dark') {
+          root.setAttribute('data-theme', 'dark');
+          toggle.textContent = '☀️';
+        } else {
+          root.removeAttribute('data-theme');
+          toggle.textContent = '🌙';
+        }
+      }
+
+      applyTheme(localStorage.getItem('fw-theme') || 'light');
+
+      toggle.addEventListener('click', function () {
+        const isDark = root.getAttribute('data-theme') === 'dark';
+        const next = isDark ? 'light' : 'dark';
+        localStorage.setItem('fw-theme', next);
+        applyTheme(next);
+      });
+    })();
+  </script>
+
+</body>
+
+</html>

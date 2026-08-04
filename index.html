@@ -1,221 +1,586 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ForeverWale — Find Your Forever</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --red:#7A1220; --red-deep:#5C0E19; --rose:#C48793;
-    --white:#FFFDFB; --ink:#2B2024; --blush:#EFDCD2; --blush-soft:#F7EEE8;
-  }
-  *{ margin:0; padding:0; box-sizing:border-box; }
-  body{ font-family:'Jost',sans-serif; color:var(--ink); background:var(--white); font-weight:300; line-height:1.6; }
-  h1,h2,h3{ font-family:'Cormorant Garamond',serif; font-weight:500; color:var(--red-deep); }
-  a{ text-decoration:none; color:inherit; }
-  ul{ list-style:none; }
-  .wrap{ max-width:1180px; margin:0 auto; padding:0 32px; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ForeverWale — Find Your Forever</title>
 
-  /* nav */
-  header{ position:sticky; top:0; background:rgba(255,253,251,.94); border-bottom:1px solid var(--blush); z-index:10; }
-  nav.wrap{ display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; row-gap:14px; padding:20px 32px; }
-  .logo{ font-family:'Cormorant Garamond',serif; font-size:1.6rem; font-weight:600; color:var(--red-deep); }
-  .logo span{ color:var(--rose); }
-  .nav-links{ display:flex; gap:32px; flex-wrap:wrap; justify-content:center; font-size:.9rem; }
-  .nav-links a:hover{ color:var(--red); }
-  .btn{ display:inline-block; font-size:.85rem; letter-spacing:.5px; padding:11px 26px; border:1px solid var(--red); color:var(--red); background:none; cursor:pointer; }
-  .btn-solid{ background:var(--red); color:var(--white); }
+  
+  <style>
+    :root {
+      --red: #7A1220;
+      --red-deep: #5C0E19;
+      --rose: #C48793;
+      --white: #FFFDFB;
+      --ink: #2B2024;
+      --blush: #EFDCD2;
+      --blush-soft: #F7EEE8;
+      --header-bg: rgba(255, 253, 251, .94);
+    }
 
-  /* hero */
-  .hero{ text-align:center; padding:90px 32px 60px; }
-  .eyebrow{ font-size:.78rem; letter-spacing:3px; text-transform:uppercase; color:var(--rose); margin-bottom:18px; }
-  .hero h1{ font-size:clamp(2.4rem,6vw,4.2rem); line-height:1.1; max-width:800px; margin:0 auto 20px; }
-  .hero h1 em{ font-style:italic; color:var(--red); }
-  .hero p.sub{ max-width:500px; margin:0 auto 44px; color:#5c4e51; }
+    :root[data-theme="dark"] {
+      --red: #E36575;
+      --red-deep: #F0AAB3;
+      --rose: #D9A0AC;
+      --white: #1B1417;
+      --ink: #F3E9E5;
+      --blush: #3A2A2E;
+      --blush-soft: #241B1E;
+      --header-bg: rgba(27, 20, 23, .94);
+    }
 
-  .search-card{ max-width:920px; margin:0 auto; background:var(--white); border:1px solid var(--blush);
-    box-shadow:0 24px 60px -30px rgba(122,18,32,.25); padding:32px; display:grid;
-    grid-template-columns:1fr 1fr 1fr 1fr auto; gap:20px; align-items:end; text-align:left; }
-  .field label{ display:block; font-size:.7rem; letter-spacing:1px; text-transform:uppercase; color:var(--rose); margin-bottom:8px; }
-  .field select, .field input{ width:100%; border:none; border-bottom:1px solid var(--blush); background:none; font-family:'Jost',sans-serif; font-size:.95rem; padding:6px 0; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  /* divider */
-  .divider{ text-align:center; padding:60px 0 10px; color:var(--rose); font-size:1.4rem; letter-spacing:20px; }
+    body {
+      font-family: 'Jost', sans-serif;
+      color: var(--ink);
+      background: var(--white);
+      font-weight: 300;
+      line-height: 1.6;
+      transition: background .25s ease, color .25s ease;
+    }
 
-  /* sections */
-  section{ padding:20px 0 90px; }
-  .section-head{ text-align:center; max-width:540px; margin:0 auto 56px; }
-  .section-head h2{ font-size:clamp(1.8rem,3.6vw,2.5rem); }
-  .section-head p{ margin-top:14px; color:#5c4e51; }
+    h1,
+    h2,
+    h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      color: var(--red-deep);
+    }
 
-  .steps{ display:grid; grid-template-columns:repeat(3,1fr); gap:50px; text-align:center; }
-  .step .num{ font-family:'Cormorant Garamond',serif; color:var(--rose); letter-spacing:2px; margin-bottom:14px; }
-  .step h3{ font-size:1.4rem; margin-bottom:10px; }
-  .step p{ font-size:.92rem; color:#5c4e51; }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
-  .stories{ background:var(--blush-soft); padding:80px 0; }
-  .story-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:32px; }
-  .story-card{ background:var(--white); border:1px solid var(--blush); padding:32px 28px; text-align:center; }
-  .story-card h3{ font-size:1.3rem; margin-bottom:4px; }
-  .meta{ font-size:.76rem; letter-spacing:1px; text-transform:uppercase; color:var(--rose); margin-bottom:14px; display:block; }
-  .story-card p.quote{ font-size:.92rem; color:#5c4e51; font-style:italic; }
+    ul {
+      list-style: none;
+    }
 
-  .trust{ display:grid; grid-template-columns:repeat(4,1fr); gap:28px; text-align:center; }
-  .trust-item .mark{ font-family:'Cormorant Garamond',serif; font-size:1.6rem; color:var(--red); margin-bottom:12px; }
-  .trust-item h4{ font-size:.95rem; margin-bottom:6px; }
-  .trust-item p{ font-size:.85rem; color:#5c4e51; }
+    .wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
 
-  .cta-band{ background:var(--red); color:var(--white); text-align:center; padding:80px 32px; }
-  .cta-band h2{ color:var(--white); font-size:clamp(1.8rem,4vw,2.6rem); margin-bottom:16px; }
-  .cta-band p{ color:#E3C3C9; max-width:460px; margin:0 auto 32px; }
-  .cta-band .btn{ border-color:var(--white); color:var(--white); }
+    header {
+      position: sticky;
+      top: 0;
+      background: var(--header-bg);
+      border-bottom: 1px solid var(--blush);
+      z-index: 10;
+    }
 
-  footer{ padding:50px 32px 36px; text-align:center; }
-  .foot-links{ display:flex; justify-content:center; gap:26px; flex-wrap:wrap; font-size:.85rem; margin:18px 0 20px; }
-  .copy{ font-size:.78rem; color:#9b8a8d; }
+    .theme-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid var(--blush);
+      background: none;
+      color: var(--red-deep);
+      cursor: pointer;
+      font-size: 1rem;
+      line-height: 1;
+      transition: border-color .2s ease, transform .2s ease;
+    }
 
-  @media (max-width:880px){
-    .search-card{ grid-template-columns:1fr 1fr; }
-    .search-card .btn-solid{ grid-column:1/-1; }
-    .steps, .story-grid, .trust{ grid-template-columns:1fr; }
-  }
-</style>
+    .theme-toggle:hover {
+      border-color: var(--red);
+      transform: rotate(15deg);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    nav.wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      row-gap: 14px;
+      padding: 20px 32px;
+    }
+
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--red-deep);
+    }
+
+    .logo span {
+      color: var(--rose);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+      justify-content: center;
+      font-size: .9rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--red);
+    }
+
+    .btn {
+      display: inline-block;
+      font-size: .85rem;
+      letter-spacing: .5px;
+      padding: 11px 26px;
+      border: 1px solid var(--red);
+      color: var(--red);
+      background: none;
+      cursor: pointer;
+    }
+
+    .btn-solid {
+      background: var(--red);
+      color: var(--white);
+    }
+
+  
+    .hero {
+      text-align: center;
+      padding: 90px 32px 60px;
+    }
+
+    .eyebrow {
+      font-size: .78rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      line-height: 1.1;
+      max-width: 800px;
+      margin: 0 auto 20px;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--red);
+    }
+
+    .hero p.sub {
+      max-width: 500px;
+      margin: 0 auto 44px;
+      color: #5c4e51;
+    }
+
+    .search-card {
+      max-width: 920px;
+      margin: 0 auto;
+      background: var(--white);
+      border: 1px solid var(--blush);
+      box-shadow: 0 24px 60px -30px rgba(122, 18, 32, .25);
+      padding: 32px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr auto;
+      gap: 20px;
+      align-items: end;
+      text-align: left;
+    }
+
+    .field label {
+      display: block;
+      font-size: .7rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 8px;
+    }
+
+    .field select,
+    .field input {
+      width: 100%;
+      border: none;
+      border-bottom: 1px solid var(--blush);
+      background: none;
+      font-family: 'Jost', sans-serif;
+      font-size: .95rem;
+      padding: 6px 0;
+    }
+
+   
+    .divider {
+      text-align: center;
+      padding: 60px 0 10px;
+      color: var(--rose);
+      font-size: 1.4rem;
+      letter-spacing: 20px;
+    }
+
+    
+    section {
+      padding: 20px 0 90px;
+    }
+
+    .section-head {
+      text-align: center;
+      max-width: 540px;
+      margin: 0 auto 56px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(1.8rem, 3.6vw, 2.5rem);
+    }
+
+    .section-head p {
+      margin-top: 14px;
+      color: #5c4e51;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 50px;
+      text-align: center;
+    }
+
+    .step .num {
+      font-family: 'Cormorant Garamond', serif;
+      color: var(--rose);
+      letter-spacing: 2px;
+      margin-bottom: 14px;
+    }
+
+    .step h3 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+
+    .step p {
+      font-size: .92rem;
+      color: #5c4e51;
+    }
+
+    .stories {
+      background: var(--blush-soft);
+      padding: 80px 0;
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .story-card {
+      background: var(--white);
+      border: 1px solid var(--blush);
+      padding: 32px 28px;
+      text-align: center;
+    }
+
+    .story-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 4px;
+    }
+
+    .meta {
+      font-size: .76rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .story-card p.quote {
+      font-size: .92rem;
+      color: #5c4e51;
+      font-style: italic;
+    }
+
+    .trust {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 28px;
+      text-align: center;
+    }
+
+    .trust-item .mark {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      color: var(--red);
+      margin-bottom: 12px;
+    }
+
+    .trust-item h4 {
+      font-size: .95rem;
+      margin-bottom: 6px;
+    }
+
+    .trust-item p {
+      font-size: .85rem;
+      color: #5c4e51;
+    }
+
+    .cta-band {
+      background: var(--red);
+      color: var(--white);
+      text-align: center;
+      padding: 80px 32px;
+    }
+
+    .cta-band h2 {
+      color: var(--white);
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      margin-bottom: 16px;
+    }
+
+    .cta-band p {
+      color: #E3C3C9;
+      max-width: 460px;
+      margin: 0 auto 32px;
+    }
+
+    .cta-band .btn {
+      border-color: var(--white);
+      color: var(--white);
+    }
+
+    footer {
+      padding: 50px 32px 36px;
+      text-align: center;
+    }
+
+    .foot-links {
+      display: flex;
+      justify-content: center;
+      gap: 26px;
+      flex-wrap: wrap;
+      font-size: .85rem;
+      margin: 18px 0 20px;
+    }
+
+    .copy {
+      font-size: .78rem;
+      color: #9b8a8d;
+    }
+
+    @media (max-width:880px) {
+      .search-card {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .search-card .btn-solid {
+        grid-column: 1/-1;
+      }
+
+      .steps,
+      .story-grid,
+      .trust {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<header>
-  <nav class="wrap">
-    <a href="#" class="logo">Forever<span>Wale</span></a>
-    <ul class="nav-links">
+  <header>
+    <nav class="wrap">
+      <a href="#" class="logo">Forever<span>Wale</span></a>
+      <ul class="nav-links">
+        <li><a href="#how">How it works</a></li>
+        <li><a href="#stories">Success stories</a></li>
+        <li><a href="#trust">Trust &amp; safety</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <div class="nav-right">
+        <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle light / dark theme">🌙</button>
+        <a href="#register" class="btn btn-solid">Register free</a>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">A meeting place for two families</p>
+      <h1>Where <em>forever</em> quietly<br>begins</h1>
+      <p class="sub">ForeverWale connects families and individuals looking for a life partner — thoughtfully, privately,
+        and on your own terms.</p>
+
+      <div class="search-card">
+        <div class="field">
+          <label for="looking-for">Looking for</label>
+          <select id="looking-for">
+            <option>Bride</option>
+            <option>Groom</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="age">Age range</label>
+          <select id="age">
+            <option>21–26</option>
+            <option>27–32</option>
+            <option>33–38</option>
+            <option>39+</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="community">Community</label>
+          <input type="text" id="community" placeholder="e.g. Punjabi, Jain, Any">
+        </div>
+        <div class="field">
+          <label for="city">City</label>
+          <input type="text" id="city" placeholder="e.g. Chandigarh">
+        </div>
+        <button type="button" class="btn btn-solid">Search matches</button>
+      </div>
+    </div>
+  </section>
+
+  <p class="divider" aria-hidden="true">❖</p>
+
+  <section id="how">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">The process</p>
+        <h2>Three quiet steps</h2>
+        <p>No noise, no swiping. Just a considered path from profile to partner.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <p class="num">01</p>
+          <h3>Create a profile</h3>
+          <p>Share your story, your family, and what you're looking for — verified and private by default.</p>
+        </div>
+        <div class="step">
+          <p class="num">02</p>
+          <h3>Receive matches</h3>
+          <p>We surface compatible profiles based on community, values, and preferences you set.</p>
+        </div>
+        <div class="step">
+          <p class="num">03</p>
+          <h3>Connect, at your pace</h3>
+          <p>Message, involve family, and take the conversation forward — entirely on your terms.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stories" id="stories">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Real beginnings</p>
+        <h2>Recently married, here</h2>
+        <p>A few of the families who found each other through ForeverWale.</p>
+      </div>
+      <div class="story-grid">
+        <div class="story-card">
+          <h3>Riya &amp; Aman</h3>
+          <span class="meta">Married March 2026 · Delhi</span>
+          <p class="quote">"Our families connected within a week of registering. Everything felt unhurried."</p>
+        </div>
+        <div class="story-card">
+          <h3>Simran &amp; Karan</h3>
+          <span class="meta">Married January 2026 · Chandigarh</span>
+          <p class="quote">"We appreciated how much control we had over who could see our profile."</p>
+        </div>
+        <div class="story-card">
+          <h3>Priya &amp; Nikhil</h3>
+          <span class="meta">Married November 2025 · Mumbai</span>
+          <p class="quote">"What started as a family search turned into the easiest decision we made together."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <p class="divider" aria-hidden="true">❖</p>
+
+  <section id="trust">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Why families trust us</p>
+        <h2>Built around privacy</h2>
+      </div>
+      <div class="trust">
+        <div class="trust-item">
+          <p class="mark">✓</p>
+          <h4>Verified profiles</h4>
+          <p>ID and family details checked before a profile goes live.</p>
+        </div>
+        <div class="trust-item">
+          <p class="mark">◐</p>
+          <h4>Photo privacy</h4>
+          <p>Choose exactly who can view your photos and contact details.</p>
+        </div>
+        <div class="trust-item">
+          <p class="mark">♥</p>
+          <h4>Community-first</h4>
+          <p>Filter by community, city, and values that matter to your family.</p>
+        </div>
+        <div class="trust-item">
+          <p class="mark">✦</p>
+          <h4>No spam, ever</h4>
+          <p>Every interest and message is from a genuine, verified profile.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-band">
+    <h2>Begin your story</h2>
+    <p>Registration takes under five minutes. Your first matches follow within a day.</p>
+    <a href="#register" class="btn">Register free</a>
+  </div>
+
+  <footer>
+    <a href="#" class="logo">Forever<span style="color:var(--rose);">Wale</span></a>
+    <ul class="foot-links">
       <li><a href="#how">How it works</a></li>
       <li><a href="#stories">Success stories</a></li>
       <li><a href="#trust">Trust &amp; safety</a></li>
+      <li><a href="#">Privacy policy</a></li>
       <li><a href="#">Contact</a></li>
     </ul>
-    <a href="#register" class="btn btn-solid">Register free</a>
-  </nav>
-</header>
+    <p class="copy">© 2026 ForeverWale. All rights reserved.</p>
+  </footer>
 
-<section class="hero">
-  <div class="wrap">
-    <p class="eyebrow">A meeting place for two families</p>
-    <h1>Where <em>forever</em> quietly<br>begins</h1>
-    <p class="sub">ForeverWale connects families and individuals looking for a life partner — thoughtfully, privately, and on your own terms.</p>
+  <script>
+    (function () {
+      const root = document.documentElement;
+      const toggle = document.getElementById('theme-toggle');
 
-    <div class="search-card">
-      <div class="field">
-        <label for="looking-for">Looking for</label>
-        <select id="looking-for"><option>Bride</option><option>Groom</option></select>
-      </div>
-      <div class="field">
-        <label for="age">Age range</label>
-        <select id="age"><option>21–26</option><option>27–32</option><option>33–38</option><option>39+</option></select>
-      </div>
-      <div class="field">
-        <label for="community">Community</label>
-        <input type="text" id="community" placeholder="e.g. Punjabi, Jain, Any">
-      </div>
-      <div class="field">
-        <label for="city">City</label>
-        <input type="text" id="city" placeholder="e.g. Chandigarh">
-      </div>
-      <button type="button" class="btn btn-solid">Search matches</button>
-    </div>
-  </div>
-</section>
+      function applyTheme(theme) {
+        if (theme === 'dark') {
+          root.setAttribute('data-theme', 'dark');
+          toggle.textContent = '☀️';
+        } else {
+          root.removeAttribute('data-theme');
+          toggle.textContent = '🌙';
+        }
+      }
 
-<p class="divider" aria-hidden="true">❖</p>
+      applyTheme(localStorage.getItem('fw-theme') || 'light');
 
-<section id="how">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow">The process</p>
-      <h2>Three quiet steps</h2>
-      <p>No noise, no swiping. Just a considered path from profile to partner.</p>
-    </div>
-    <div class="steps">
-      <div class="step">
-        <p class="num">01</p>
-        <h3>Create a profile</h3>
-        <p>Share your story, your family, and what you're looking for — verified and private by default.</p>
-      </div>
-      <div class="step">
-        <p class="num">02</p>
-        <h3>Receive matches</h3>
-        <p>We surface compatible profiles based on community, values, and preferences you set.</p>
-      </div>
-      <div class="step">
-        <p class="num">03</p>
-        <h3>Connect, at your pace</h3>
-        <p>Message, involve family, and take the conversation forward — entirely on your terms.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="stories" id="stories">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow">Real beginnings</p>
-      <h2>Recently married, here</h2>
-      <p>A few of the families who found each other through ForeverWale.</p>
-    </div>
-    <div class="story-grid">
-      <div class="story-card">
-        <h3>Riya &amp; Aman</h3>
-        <span class="meta">Married March 2026 · Delhi</span>
-        <p class="quote">"Our families connected within a week of registering. Everything felt unhurried."</p>
-      </div>
-      <div class="story-card">
-        <h3>Simran &amp; Karan</h3>
-        <span class="meta">Married January 2026 · Chandigarh</span>
-        <p class="quote">"We appreciated how much control we had over who could see our profile."</p>
-      </div>
-      <div class="story-card">
-        <h3>Priya &amp; Nikhil</h3>
-        <span class="meta">Married November 2025 · Mumbai</span>
-        <p class="quote">"What started as a family search turned into the easiest decision we made together."</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<p class="divider" aria-hidden="true">❖</p>
-
-<section id="trust">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow">Why families trust us</p>
-      <h2>Built around privacy</h2>
-    </div>
-    <div class="trust">
-      <div class="trust-item"><p class="mark">✓</p><h4>Verified profiles</h4><p>ID and family details checked before a profile goes live.</p></div>
-      <div class="trust-item"><p class="mark">◐</p><h4>Photo privacy</h4><p>Choose exactly who can view your photos and contact details.</p></div>
-      <div class="trust-item"><p class="mark">♥</p><h4>Community-first</h4><p>Filter by community, city, and values that matter to your family.</p></div>
-      <div class="trust-item"><p class="mark">✦</p><h4>No spam, ever</h4><p>Every interest and message is from a genuine, verified profile.</p></div>
-    </div>
-  </div>
-</section>
-
-<div class="cta-band">
-  <h2>Begin your story</h2>
-  <p>Registration takes under five minutes. Your first matches follow within a day.</p>
-  <a href="#register" class="btn">Register free</a>
-</div>
-
-<footer>
-  <a href="#" class="logo">Forever<span style="color:var(--rose);">Wale</span></a>
-  <ul class="foot-links">
-    <li><a href="#how">How it works</a></li>
-    <li><a href="#stories">Success stories</a></li>
-    <li><a href="#trust">Trust &amp; safety</a></li>
-    <li><a href="#">Privacy policy</a></li>
-    <li><a href="#">Contact</a></li>
-  </ul>
-  <p class="copy">© 2026 ForeverWale. All rights reserved.</p>
-</footer>
+      toggle.addEventListener('click', function () {
+        const isDark = root.getAttribute('data-theme') === 'dark';
+        const next = isDark ? 'light' : 'dark';
+        localStorage.setItem('fw-theme', next);
+        applyTheme(next);
+      });
+    })();
+  </script>
 
 </body>
+
 </html>
