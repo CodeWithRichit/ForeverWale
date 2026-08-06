@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Find Matches — ForeverWale</title>
+  <link rel="stylesheet" href="assets/style.css">
+  <style>
+    .avatar {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.6rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+  </style>
+</head>
+
+<body data-page="find-matches">
+
+  <header class="site-header">
+    <nav class="navbar wrap">
+      <a href="index.html" class="logo">Forever<span>Wale</span></a>
+
+      <button type="button" id="nav-toggle" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+      </button>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" data-page="home">Home</a></li>
+        <li><a href="find-matches.html" data-page="find-matches">Find Matches</a></li>
+        <li><a href="post-your-details.html" data-page="post-details">Post Your Details</a></li>
+        <li><a href="about-us.html" data-page="about">About Us</a></li>
+        <li><a href="contact-us.html" data-page="contact">Contact Us</a></li>
+        <li data-auth="guest"><a href="signin.html" data-page="signin">Sign In</a></li>
+        <li data-auth="user"><a href="#" id="logout-link">Logout</a></li>
+      </ul>
+
+      <div class="nav-right">
+        <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle light / dark theme">🌙</button>
+        <a href="signup.html" class="btn btn-solid" data-auth="guest">Sign Up</a>
+      </div>
+    </nav>
+  </header>
+
+  <section class="page-hero">
+    <div class="wrap">
+      <p class="eyebrow">Browse profiles</p>
+      <h1>Find your matches</h1>
+      <p>Search and filter verified profiles by community, city, education, and more.</p>
+      <p class="breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; Find Matches</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+
+      <form class="search-toolbar" id="filters-form">
+        <div class="field search-main">
+          <label for="fm-search">Search by name, community, or keyword</label>
+          <input type="text" id="fm-search" placeholder="e.g. Riya, Punjabi, Software Engineer">
+        </div>
+
+        <div class="filters-grid">
+          <div class="field">
+            <label for="f-age">Age</label>
+            <select id="f-age">
+              <option>Any</option>
+              <option>21–26</option>
+              <option>27–32</option>
+              <option>33–38</option>
+              <option>39+</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-gender">Gender</label>
+            <select id="f-gender">
+              <option>Any</option>
+              <option>Bride</option>
+              <option>Groom</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-religion">Religion</label>
+            <select id="f-religion">
+              <option>Any</option>
+              <option>Hindu</option>
+              <option>Sikh</option>
+              <option>Muslim</option>
+              <option>Christian</option>
+              <option>Jain</option>
+            </select>
+          </div>
+          <div class="field"><label for="f-caste">Caste</label><input type="text" id="f-caste" placeholder="Any"></div>
+          <div class="field"><label for="f-city">City</label><input type="text" id="f-city" placeholder="e.g. Chandigarh"></div>
+          <div class="field"><label for="f-occupation">Occupation</label><input type="text" id="f-occupation" placeholder="e.g. Doctor"></div>
+          <div class="field"><label for="f-education">Education</label><input type="text" id="f-education" placeholder="e.g. MBA"></div>
+          <div class="field"><label for="f-height">Height</label><input type="text" id="f-height" placeholder="e.g. 5 ft 4 in+"></div>
+        </div>
+
+        <div class="form-actions" style="margin-top:26px;">
+          <button type="submit" class="btn btn-solid">Search matches</button>
+        </div>
+      </form>
+
+      <div class="profile-grid" id="profile-grid">
+
+        <article class="profile-card">
+          <div class="profile-photo" style="background:linear-gradient(135deg, var(--rose), var(--red));">
+            <div class="avatar">RS</div>
+            <span class="age-badge">27 yrs</span>
+          </div>
+          <div class="profile-body">
+            <h3>Riya Sharma</h3>
+            <p class="profile-meta">5 ft 5 in · Software Engineer · Chandigarh</p>
+            <p class="profile-bio">Loves classical dance and weekend trekking. Looking for a grounded, family-oriented partner.</p>
+            <div class="profile-actions">
+              <a href="#" class="btn">View Profile</a>
+              <button type="button" class="btn btn-solid js-interest">Interest</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="profile-card">
+          <div class="profile-photo" style="background:linear-gradient(135deg, var(--red), var(--red-deep));">
+            <div class="avatar">AK</div>
+            <span class="age-badge">30 yrs</span>
+          </div>
+          <div class="profile-body">
+            <h3>Aman Kapoor</h3>
+            <p class="profile-meta">5 ft 10 in · Chartered Accountant · Delhi</p>
+            <p class="profile-bio">Enjoys cooking and cricket. Comes from a close-knit nuclear family, values honesty above all.</p>
+            <div class="profile-actions">
+              <a href="#" class="btn">View Profile</a>
+              <button type="button" class="btn btn-solid js-interest">Interest</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="profile-card">
+          <div class="profile-photo" style="background:linear-gradient(135deg, var(--rose), var(--red-deep));">
+            <div class="avatar">SK</div>
+            <span class="age-badge">26 yrs</span>
+          </div>
+          <div class="profile-body">
+            <h3>Simran Kaur</h3>
+            <p class="profile-meta">5 ft 4 in · Doctor · Mohali</p>
+            <p class="profile-bio">Passionate about community health work. Seeking someone kind, ambitious, and family-first.</p>
+            <div class="profile-actions">
+              <a href="#" class="btn">View Profile</a>
+              <button type="button" class="btn btn-solid js-interest">Interest</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="profile-card">
+          <div class="profile-photo" style="background:linear-gradient(135deg, var(--red-deep), var(--rose));">
+            <div class="avatar">NV</div>
+            <span class="age-badge">29 yrs</span>
+          </div>
+          <div class="profile-body">
+            <h3>Nikhil Verma</h3>
+            <p class="profile-meta">5 ft 9 in · Product Manager · Mumbai</p>
+            <p class="profile-bio">Loves travel photography and quiet weekends. Looking for a warm, communicative partner.</p>
+            <div class="profile-actions">
+              <a href="#" class="btn">View Profile</a>
+              <button type="button" class="btn btn-solid js-interest">Interest</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="profile-card">
+          <div class="profile-photo" style="background:linear-gradient(135deg, var(--rose), var(--red));">
+            <div class="avatar">PN</div>
+            <span class="age-badge">28 yrs</span>
+          </div>
+          <div class="profile-body">
+            <h3>Priya Nair</h3>
+            <p class="profile-meta">5 ft 3 in · Architect · Bengaluru</p>
+            <p class="profile-bio">Enjoys sketching and Sunday farmers' markets. Values calm, thoughtful conversation.</p>
+            <div class="profile-actions">
+              <a href="#" class="btn">View Profile</a>
+              <button type="button" class="btn btn-solid js-interest">Interest</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="profile-card">
+          <div class="profile-photo" style="background:linear-gradient(135deg, var(--red), var(--rose));">
+            <div class="avatar">KM</div>
+            <span class="age-badge">31 yrs</span>
+          </div>
+          <div class="profile-body">
+            <h3>Karan Mehta</h3>
+            <p class="profile-meta">6 ft 0 in · Entrepreneur · Ahmedabad</p>
+            <p class="profile-bio">Runs a small design studio. Looking for a confident, easygoing partner who loves to laugh.</p>
+            <div class="profile-actions">
+              <a href="#" class="btn">View Profile</a>
+              <button type="button" class="btn btn-solid js-interest">Interest</button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <a href="index.html" class="logo">Forever<span style="color:var(--rose);">Wale</span></a>
+    <ul class="foot-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="find-matches.html">Find Matches</a></li>
+      <li><a href="post-your-details.html">Post Your Details</a></li>
+      <li><a href="about-us.html">About Us</a></li>
+      <li><a href="contact-us.html">Contact Us</a></li>
+    </ul>
+    <p class="copy">© 2026 ForeverWale. All rights reserved.</p>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+
+</html>

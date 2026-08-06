@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post Your Details — ForeverWale</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+
+<body data-page="post-details">
+
+  <header class="site-header">
+    <nav class="navbar wrap">
+      <a href="index.html" class="logo">Forever<span>Wale</span></a>
+
+      <button type="button" id="nav-toggle" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+      </button>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" data-page="home">Home</a></li>
+        <li><a href="find-matches.html" data-page="find-matches">Find Matches</a></li>
+        <li><a href="post-your-details.html" data-page="post-details">Post Your Details</a></li>
+        <li><a href="about-us.html" data-page="about">About Us</a></li>
+        <li><a href="contact-us.html" data-page="contact">Contact Us</a></li>
+        <li data-auth="guest"><a href="signin.html" data-page="signin">Sign In</a></li>
+        <li data-auth="user"><a href="#" id="logout-link">Logout</a></li>
+      </ul>
+
+      <div class="nav-right">
+        <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle light / dark theme">🌙</button>
+        <a href="signup.html" class="btn btn-solid" data-auth="guest">Sign Up</a>
+      </div>
+    </nav>
+  </header>
+
+  <section class="page-hero">
+    <div class="wrap">
+      <p class="eyebrow">Create your profile</p>
+      <h1>Post your details</h1>
+      <p>Tell us about yourself, your family, and what you're looking for. Verified and kept private by default.</p>
+      <p class="breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; Post Your Details</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="panel" style="max-width:960px; margin:0 auto;">
+
+        <div class="form-alert" id="details-alert"></div>
+
+        <form id="details-form">
+
+          <div class="form-section">
+            <h3><span class="tag-num">01</span> Personal Details</h3>
+            <div class="form-grid">
+              <div class="field"><label for="pd-name">Full Name</label><input type="text" id="pd-name" required></div>
+              <div class="field">
+                <label for="pd-gender">Gender</label>
+                <select id="pd-gender">
+                  <option>Female</option>
+                  <option>Male</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="field"><label for="pd-dob">Date of Birth</label><input type="date" id="pd-dob"></div>
+              <div class="field"><label for="pd-age">Age</label><input type="number" id="pd-age" min="18" max="90" placeholder="e.g. 27"></div>
+              <div class="field"><label for="pd-height">Height</label><input type="text" id="pd-height" placeholder="e.g. 5 ft 6 in"></div>
+              <div class="field"><label for="pd-weight">Weight</label><input type="text" id="pd-weight" placeholder="e.g. 60 kg"></div>
+              <div class="field">
+                <label for="pd-marital">Marital Status</label>
+                <select id="pd-marital">
+                  <option>Never Married</option>
+                  <option>Divorced</option>
+                  <option>Widowed</option>
+                  <option>Awaiting Divorce</option>
+                </select>
+              </div>
+              <div class="field"><label for="pd-religion">Religion</label><input type="text" id="pd-religion" placeholder="e.g. Hindu, Sikh, Muslim"></div>
+              <div class="field"><label for="pd-caste">Caste</label><input type="text" id="pd-caste"></div>
+              <div class="field"><label for="pd-mother-tongue">Mother Tongue</label><input type="text" id="pd-mother-tongue"></div>
+              <div class="field"><label for="pd-nationality">Nationality</label><input type="text" id="pd-nationality" placeholder="e.g. Indian"></div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h3><span class="tag-num">02</span> Professional Details</h3>
+            <div class="form-grid">
+              <div class="field"><label for="pd-occupation">Occupation</label><input type="text" id="pd-occupation"></div>
+              <div class="field"><label for="pd-company">Company</label><input type="text" id="pd-company"></div>
+              <div class="field"><label for="pd-income">Annual Income</label><input type="text" id="pd-income" placeholder="e.g. ₹12,00,000"></div>
+              <div class="field"><label for="pd-education">Education</label><input type="text" id="pd-education" placeholder="e.g. B.Tech, MBA"></div>
+              <div class="field full"><label for="pd-college">College / University</label><input type="text" id="pd-college"></div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h3><span class="tag-num">03</span> Lifestyle</h3>
+            <div class="form-grid">
+              <div class="field">
+                <label for="pd-smoking">Smoking</label>
+                <select id="pd-smoking">
+                  <option>No</option>
+                  <option>Occasionally</option>
+                  <option>Yes</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="pd-drinking">Drinking</label>
+                <select id="pd-drinking">
+                  <option>No</option>
+                  <option>Occasionally</option>
+                  <option>Yes</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="pd-food">Food Preference</label>
+                <select id="pd-food">
+                  <option>Vegetarian</option>
+                  <option>Non-Vegetarian</option>
+                  <option>Eggetarian</option>
+                  <option>Vegan</option>
+                </select>
+              </div>
+              <div class="field"><label for="pd-hobbies">Hobbies</label><input type="text" id="pd-hobbies" placeholder="e.g. Reading, Travel, Music"></div>
+              <div class="field full"><label for="pd-interests">Interests</label><input type="text" id="pd-interests" placeholder="e.g. Cooking, Fitness, Movies"></div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h3><span class="tag-num">04</span> Family Details</h3>
+            <div class="form-grid">
+              <div class="field"><label for="pd-father">Father's Name</label><input type="text" id="pd-father"></div>
+              <div class="field"><label for="pd-mother">Mother's Name</label><input type="text" id="pd-mother"></div>
+              <div class="field"><label for="pd-siblings">Siblings</label><input type="text" id="pd-siblings" placeholder="e.g. 1 brother, 1 sister"></div>
+              <div class="field">
+                <label for="pd-family-type">Family Type</label>
+                <select id="pd-family-type">
+                  <option>Nuclear</option>
+                  <option>Joint</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h3><span class="tag-num">05</span> Contact Details</h3>
+            <div class="form-grid">
+              <div class="field"><label for="pd-mobile">Mobile Number</label><input type="tel" id="pd-mobile" required></div>
+              <div class="field"><label for="pd-email">Email</label><input type="email" id="pd-email" required></div>
+              <div class="field"><label for="pd-city">City</label><input type="text" id="pd-city"></div>
+              <div class="field"><label for="pd-state">State</label><input type="text" id="pd-state"></div>
+              <div class="field"><label for="pd-country">Country</label><input type="text" id="pd-country"></div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h3><span class="tag-num">06</span> Partner Preferences</h3>
+            <div class="form-grid">
+              <div class="field"><label for="pp-age">Preferred Age</label><input type="text" id="pp-age" placeholder="e.g. 25–30"></div>
+              <div class="field"><label for="pp-height">Preferred Height</label><input type="text" id="pp-height" placeholder="e.g. 5 ft 4 in and above"></div>
+              <div class="field"><label for="pp-religion">Preferred Religion</label><input type="text" id="pp-religion"></div>
+              <div class="field"><label for="pp-education">Preferred Education</label><input type="text" id="pp-education"></div>
+              <div class="field full"><label for="pp-occupation">Preferred Occupation</label><input type="text" id="pp-occupation"></div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h3><span class="tag-num">07</span> Uploads</h3>
+            <div class="form-grid cols-2">
+              <div class="field">
+                <label for="pd-photo">Profile Picture</label>
+                <label class="upload-box" for="pd-photo"><strong>Choose a file</strong> or drag it here — JPG/PNG, up to 5MB</label>
+                <input type="file" id="pd-photo" accept="image/*" style="display:none;">
+              </div>
+              <div class="field">
+                <label for="pd-photos">Additional Photos</label>
+                <label class="upload-box" for="pd-photos"><strong>Choose files</strong> or drag them here — up to 5 images</label>
+                <input type="file" id="pd-photos" accept="image/*" multiple style="display:none;">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-solid">Submit</button>
+            <button type="reset" id="details-reset" class="btn">Reset</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <a href="index.html" class="logo">Forever<span style="color:var(--rose);">Wale</span></a>
+    <ul class="foot-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="find-matches.html">Find Matches</a></li>
+      <li><a href="post-your-details.html">Post Your Details</a></li>
+      <li><a href="about-us.html">About Us</a></li>
+      <li><a href="contact-us.html">Contact Us</a></li>
+    </ul>
+    <p class="copy">© 2026 ForeverWale. All rights reserved.</p>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+
+</html>
