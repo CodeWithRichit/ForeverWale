@@ -14,23 +14,23 @@
     <nav class="navbar wrap">
       <a href="index.html" class="logo">Forever<span>Wale</span></a>
 
-      <input type="checkbox" id="nav-toggle-cb" class="nav-toggle-cb">
-      <label for="nav-toggle-cb" class="nav-toggle" aria-label="Toggle menu">
+      <button type="button" id="nav-toggle" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
         <span></span>
-      </label>
+      </button>
 
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="find-matches.html">Find Matches</a></li>
-        <li><a href="post-your-details.html">Post Your Details</a></li>
-        <li><a href="about-us.html">About Us</a></li>
-        <li><a href="contact-us.html">Contact Us</a></li>
-        <li><a href="signin.html" class="active">Sign In</a></li>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" data-page="home">Home</a></li>
+        <li><a href="find-matches.html" data-page="find-matches">Find Matches</a></li>
+        <li><a href="post-your-details.html" data-page="post-details">Post Your Details</a></li>
+        <li><a href="about-us.html" data-page="about">About Us</a></li>
+        <li><a href="contact-us.html" data-page="contact">Contact Us</a></li>
+        <li data-auth="guest"><a href="signin.html" data-page="signin">Sign In</a></li>
+        <li data-auth="user" class="auth-hidden"><a href="#" id="logout-link">Logout</a></li>
       </ul>
 
       <div class="nav-right">
         <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle light / dark theme">🌙</button>
-        <a href="signup.html" class="btn btn-solid">Sign Up</a>
+        <a href="signup.html" class="btn btn-solid" data-auth="guest">Sign Up</a>
       </div>
     </nav>
   </header>
@@ -48,26 +48,27 @@
     <div class="auth-wrap">
       <div class="panel auth-card">
 
-        <div class="form-alert" id="signin-alert">Signed in successfully! Welcome back.</div>
+        <div class="form-alert" id="signin-alert"></div>
 
-        <form id="signin-form" action="#signin-alert" method="get">
+        <form id="signin-form">
           <div class="form-grid cols-2" style="margin-bottom:10px;">
             <div class="field full">
               <label for="si-id">Email or Mobile Number</label>
-              <input type="text" id="si-id" name="si-id" required>
+              <input type="text" id="si-id" required>
             </div>
             <div class="field full field-password">
               <label for="si-password">Password</label>
-              <input type="password" id="si-password" name="si-password" required>
+              <input type="password" id="si-password" required>
+              <button type="button" class="toggle-pass" data-target="si-password">Show</button>
             </div>
           </div>
 
           <div class="field-row-between">
             <label class="check-row">
-              <input type="checkbox" id="si-remember" name="si-remember">
+              <input type="checkbox" id="si-remember">
               Remember me
             </label>
-            <a href="#">Forgot password?</a>
+            <a href="#" id="forgot-link">Forgot password?</a>
           </div>
 
           <div class="form-actions">

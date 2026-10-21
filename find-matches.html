@@ -27,23 +27,23 @@
     <nav class="navbar wrap">
       <a href="index.html" class="logo">Forever<span>Wale</span></a>
 
-      <input type="checkbox" id="nav-toggle-cb" class="nav-toggle-cb">
-      <label for="nav-toggle-cb" class="nav-toggle" aria-label="Toggle menu">
+      <button type="button" id="nav-toggle" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
         <span></span>
-      </label>
+      </button>
 
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="find-matches.html" class="active">Find Matches</a></li>
-        <li><a href="post-your-details.html">Post Your Details</a></li>
-        <li><a href="about-us.html">About Us</a></li>
-        <li><a href="contact-us.html">Contact Us</a></li>
-        <li><a href="signin.html">Sign In</a></li>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" data-page="home">Home</a></li>
+        <li><a href="find-matches.html" data-page="find-matches">Find Matches</a></li>
+        <li><a href="post-your-details.html" data-page="post-details">Post Your Details</a></li>
+        <li><a href="about-us.html" data-page="about">About Us</a></li>
+        <li><a href="contact-us.html" data-page="contact">Contact Us</a></li>
+        <li data-auth="guest"><a href="signin.html" data-page="signin">Sign In</a></li>
+        <li data-auth="user" class="auth-hidden"><a href="#" id="logout-link">Logout</a></li>
       </ul>
 
       <div class="nav-right">
         <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle light / dark theme">🌙</button>
-        <a href="signup.html" class="btn btn-solid">Sign Up</a>
+        <a href="signup.html" class="btn btn-solid" data-auth="guest">Sign Up</a>
       </div>
     </nav>
   </header>
@@ -60,7 +60,7 @@
   <section>
     <div class="wrap">
 
-      <form class="search-toolbar" id="filters-form" action="#profile-grid" method="get">
+      <form class="search-toolbar" id="filters-form">
         <div class="field search-main">
           <label for="fm-search">Search by name, community, or keyword</label>
           <input type="text" id="fm-search" placeholder="e.g. Riya, Punjabi, Software Engineer">
@@ -105,12 +105,15 @@
 
         <div class="form-actions" style="margin-top:26px;">
           <button type="submit" class="btn btn-solid">Search matches</button>
+          <button type="button" id="clear-filters" class="btn">Clear filters</button>
         </div>
       </form>
 
+      <p id="result-count" class="result-count" aria-live="polite"></p>
+
       <div class="profile-grid" id="profile-grid">
 
-        <article class="profile-card">
+        <article class="profile-card" data-name="Riya Sharma" data-gender="Bride" data-age="27" data-religion="Hindu" data-caste="Punjabi" data-city="Chandigarh" data-job="Software Engineer" data-edu="B.Tech" data-height="65">
           <div class="profile-photo" style="background:linear-gradient(135deg, var(--rose), var(--red));">
             <div class="avatar">RS</div>
             <span class="age-badge">27 yrs</span>
@@ -120,14 +123,13 @@
             <p class="profile-meta">5 ft 5 in · Software Engineer · Chandigarh</p>
             <p class="profile-bio">Loves classical dance and weekend trekking. Looking for a grounded, family-oriented partner.</p>
             <div class="profile-actions">
-              <a href="#" class="btn">View Profile</a>
-              <input type="checkbox" id="interest-1" class="js-interest-cb">
-              <label for="interest-1" class="btn btn-solid js-interest-label"><span class="label-default">Interest</span><span class="label-sent">Interest sent ✓</span></label>
+              <button type="button" class="btn js-view">View Profile</button>
+              <button type="button" class="btn btn-solid js-interest">Interest</button>
             </div>
           </div>
         </article>
 
-        <article class="profile-card">
+        <article class="profile-card" data-name="Aman Kapoor" data-gender="Groom" data-age="30" data-religion="Hindu" data-caste="Punjabi" data-city="Delhi" data-job="Chartered Accountant" data-edu="CA" data-height="70">
           <div class="profile-photo" style="background:linear-gradient(135deg, var(--red), var(--red-deep));">
             <div class="avatar">AK</div>
             <span class="age-badge">30 yrs</span>
@@ -137,14 +139,13 @@
             <p class="profile-meta">5 ft 10 in · Chartered Accountant · Delhi</p>
             <p class="profile-bio">Enjoys cooking and cricket. Comes from a close-knit nuclear family, values honesty above all.</p>
             <div class="profile-actions">
-              <a href="#" class="btn">View Profile</a>
-              <input type="checkbox" id="interest-2" class="js-interest-cb">
-              <label for="interest-2" class="btn btn-solid js-interest-label"><span class="label-default">Interest</span><span class="label-sent">Interest sent ✓</span></label>
+              <button type="button" class="btn js-view">View Profile</button>
+              <button type="button" class="btn btn-solid js-interest">Interest</button>
             </div>
           </div>
         </article>
 
-        <article class="profile-card">
+        <article class="profile-card" data-name="Simran Kaur" data-gender="Bride" data-age="26" data-religion="Sikh" data-caste="Punjabi" data-city="Mohali" data-job="Doctor" data-edu="MBBS" data-height="64">
           <div class="profile-photo" style="background:linear-gradient(135deg, var(--rose), var(--red-deep));">
             <div class="avatar">SK</div>
             <span class="age-badge">26 yrs</span>
@@ -154,14 +155,13 @@
             <p class="profile-meta">5 ft 4 in · Doctor · Mohali</p>
             <p class="profile-bio">Passionate about community health work. Seeking someone kind, ambitious, and family-first.</p>
             <div class="profile-actions">
-              <a href="#" class="btn">View Profile</a>
-              <input type="checkbox" id="interest-3" class="js-interest-cb">
-              <label for="interest-3" class="btn btn-solid js-interest-label"><span class="label-default">Interest</span><span class="label-sent">Interest sent ✓</span></label>
+              <button type="button" class="btn js-view">View Profile</button>
+              <button type="button" class="btn btn-solid js-interest">Interest</button>
             </div>
           </div>
         </article>
 
-        <article class="profile-card">
+        <article class="profile-card" data-name="Nikhil Verma" data-gender="Groom" data-age="29" data-religion="Hindu" data-caste="Kayastha" data-city="Mumbai" data-job="Product Manager" data-edu="MBA" data-height="69">
           <div class="profile-photo" style="background:linear-gradient(135deg, var(--red-deep), var(--rose));">
             <div class="avatar">NV</div>
             <span class="age-badge">29 yrs</span>
@@ -171,14 +171,13 @@
             <p class="profile-meta">5 ft 9 in · Product Manager · Mumbai</p>
             <p class="profile-bio">Loves travel photography and quiet weekends. Looking for a warm, communicative partner.</p>
             <div class="profile-actions">
-              <a href="#" class="btn">View Profile</a>
-              <input type="checkbox" id="interest-4" class="js-interest-cb">
-              <label for="interest-4" class="btn btn-solid js-interest-label"><span class="label-default">Interest</span><span class="label-sent">Interest sent ✓</span></label>
+              <button type="button" class="btn js-view">View Profile</button>
+              <button type="button" class="btn btn-solid js-interest">Interest</button>
             </div>
           </div>
         </article>
 
-        <article class="profile-card">
+        <article class="profile-card" data-name="Priya Nair" data-gender="Bride" data-age="28" data-religion="Hindu" data-caste="Nair" data-city="Bengaluru" data-job="Architect" data-edu="B.Arch" data-height="63">
           <div class="profile-photo" style="background:linear-gradient(135deg, var(--rose), var(--red));">
             <div class="avatar">PN</div>
             <span class="age-badge">28 yrs</span>
@@ -188,14 +187,13 @@
             <p class="profile-meta">5 ft 3 in · Architect · Bengaluru</p>
             <p class="profile-bio">Enjoys sketching and Sunday farmers' markets. Values calm, thoughtful conversation.</p>
             <div class="profile-actions">
-              <a href="#" class="btn">View Profile</a>
-              <input type="checkbox" id="interest-5" class="js-interest-cb">
-              <label for="interest-5" class="btn btn-solid js-interest-label"><span class="label-default">Interest</span><span class="label-sent">Interest sent ✓</span></label>
+              <button type="button" class="btn js-view">View Profile</button>
+              <button type="button" class="btn btn-solid js-interest">Interest</button>
             </div>
           </div>
         </article>
 
-        <article class="profile-card">
+        <article class="profile-card" data-name="Karan Mehta" data-gender="Groom" data-age="31" data-religion="Jain" data-caste="Gujarati" data-city="Ahmedabad" data-job="Entrepreneur" data-edu="B.Des" data-height="72">
           <div class="profile-photo" style="background:linear-gradient(135deg, var(--red), var(--rose));">
             <div class="avatar">KM</div>
             <span class="age-badge">31 yrs</span>
@@ -205,16 +203,30 @@
             <p class="profile-meta">6 ft 0 in · Entrepreneur · Ahmedabad</p>
             <p class="profile-bio">Runs a small design studio. Looking for a confident, easygoing partner who loves to laugh.</p>
             <div class="profile-actions">
-              <a href="#" class="btn">View Profile</a>
-              <input type="checkbox" id="interest-6" class="js-interest-cb">
-              <label for="interest-6" class="btn btn-solid js-interest-label"><span class="label-default">Interest</span><span class="label-sent">Interest sent ✓</span></label>
+              <button type="button" class="btn js-view">View Profile</button>
+              <button type="button" class="btn btn-solid js-interest">Interest</button>
             </div>
           </div>
         </article>
 
       </div>
+
+      <p id="no-results" class="no-results" style="display:none">No profiles match your search. Try clearing a filter.</p>
     </div>
   </section>
+
+  <!-- Pop-up shown by the "View Profile" buttons (filled in by app.js) -->
+  <div class="modal" id="profile-modal" hidden>
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="pm-name">
+      <button type="button" class="modal-close" id="pm-close" aria-label="Close">&times;</button>
+      <div class="modal-avatar" id="pm-avatar"></div>
+      <h2 id="pm-name"></h2>
+      <p class="profile-meta" id="pm-meta"></p>
+      <dl class="modal-details" id="pm-details"></dl>
+      <p class="profile-bio" id="pm-bio"></p>
+      <button type="button" class="btn btn-solid btn-block" id="pm-interest">Send interest</button>
+    </div>
+  </div>
 
   <footer class="site-footer">
     <a href="index.html" class="logo">Forever<span style="color:var(--rose);">Wale</span></a>

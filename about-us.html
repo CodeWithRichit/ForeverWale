@@ -14,23 +14,23 @@
     <nav class="navbar wrap">
       <a href="index.html" class="logo">Forever<span>Wale</span></a>
 
-      <input type="checkbox" id="nav-toggle-cb" class="nav-toggle-cb">
-      <label for="nav-toggle-cb" class="nav-toggle" aria-label="Toggle menu">
+      <button type="button" id="nav-toggle" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
         <span></span>
-      </label>
+      </button>
 
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="find-matches.html">Find Matches</a></li>
-        <li><a href="post-your-details.html">Post Your Details</a></li>
-        <li><a href="about-us.html" class="active">About Us</a></li>
-        <li><a href="contact-us.html">Contact Us</a></li>
-        <li><a href="signin.html">Sign In</a></li>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" data-page="home">Home</a></li>
+        <li><a href="find-matches.html" data-page="find-matches">Find Matches</a></li>
+        <li><a href="post-your-details.html" data-page="post-details">Post Your Details</a></li>
+        <li><a href="about-us.html" data-page="about">About Us</a></li>
+        <li><a href="contact-us.html" data-page="contact">Contact Us</a></li>
+        <li data-auth="guest"><a href="signin.html" data-page="signin">Sign In</a></li>
+        <li data-auth="user" class="auth-hidden"><a href="#" id="logout-link">Logout</a></li>
       </ul>
 
       <div class="nav-right">
         <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle light / dark theme">🌙</button>
-        <a href="signup.html" class="btn btn-solid">Sign Up</a>
+        <a href="signup.html" class="btn btn-solid" data-auth="guest">Sign Up</a>
       </div>
     </nav>
   </header>
@@ -110,16 +110,19 @@
       </div>
       <div class="story-grid">
         <div class="story-card">
+          <img class="story-photo" src="assets/images/stories/riya-aman.jpg" alt="Riya and Aman on their wedding day" loading="lazy">
           <h3>Riya &amp; Aman</h3>
           <span class="meta">Married March 2026 · Delhi</span>
           <p class="quote">"Our families connected within a week of registering. Everything felt unhurried."</p>
         </div>
         <div class="story-card">
+          <img class="story-photo" src="assets/images/stories/simran-karan.jpg" alt="Simran and Karan on their wedding day" loading="lazy">
           <h3>Simran &amp; Karan</h3>
           <span class="meta">Married January 2026 · Chandigarh</span>
           <p class="quote">"We appreciated how much control we had over who could see our profile."</p>
         </div>
         <div class="story-card">
+          <img class="story-photo" src="assets/images/stories/priya-nikhil.jpg" alt="Priya and Nikhil on their wedding day" loading="lazy">
           <h3>Priya &amp; Nikhil</h3>
           <span class="meta">Married November 2025 · Mumbai</span>
           <p class="quote">"What started as a family search turned into the easiest decision we made together."</p>
