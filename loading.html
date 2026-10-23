@@ -5,7 +5,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="refresh" content="5;url=index.html">
+  <noscript><meta http-equiv="refresh" content="5;url=index.html"></noscript>
   <title>ForeverWale — Loading</title>
 
   <style>
@@ -106,18 +106,9 @@
       width: 0%;
       background: linear-gradient(90deg, var(--rose), var(--red));
       border-radius: 4px;
-      animation: fill 5s linear forwards;
+      transition: width .1s linear;
     }
 
-    @keyframes fill {
-      0% {
-        width: 0%;
-      }
-
-      100% {
-        width: 100%;
-      }
-    }
 
     .percent {
       margin-top: 16px;
@@ -137,9 +128,10 @@
     <p class="eyebrow">Finding your forever&hellip;</p>
 
     <div class="bar-track">
-      <div class="bar-fill"></div>
+      <div class="bar-fill" id="bar-fill"></div>
     </div>
-    <p class="percent">Please wait&hellip;</p>
+    <p class="percent" id="percent">0%</p>
+    <p class="percent" id="message">Please wait&hellip;</p>
   </div>
 
   <script>
@@ -166,6 +158,44 @@
         applyTheme(next);
       });
     })();
+  </script>
+
+  <script>
+    // ---------- LOADING SCREEN (easy version) ----------
+    // Step 1: grab the things on the page we want to change
+    const barFill = document.getElementById('bar-fill');   
+    const percentText = document.getElementById('percent');
+    const messageText = document.getElementById('message'); 
+
+  
+    const messages = [
+      'Setting things up...',
+      'Finding your matches...',
+      'Almost there...',
+      'Welcome to ForeverWale!'
+    ];
+
+   
+    let percent = 0;
+
+
+    const timer = setInterval(function () {
+      percent = percent + 1;
+
+     
+      barFill.style.width = percent + '%';
+      percentText.textContent = percent + '%';
+
+     
+      const index = Math.floor(percent / 25);
+      messageText.textContent = messages[Math.min(index, messages.length - 1)];
+
+      
+      if (percent >= 100) {
+        clearInterval(timer);
+        window.location.href = 'index.html';
+      }
+    }, 50);
   </script>
 
 </body>
