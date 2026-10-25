@@ -48,6 +48,19 @@ function toast(message) {
   setTimeout(function () { box.remove(); }, 2600);
 }
 
+// Simulates a server round-trip. Returns a Promise that resolves after `ms` milliseconds.
+// In a real backend, this would be a fetch() call to POST the profile.
+function fakeServerSave(data, ms) {
+  return new Promise(function (resolve, reject) {
+    setTimeout(function () {
+      if (data) {
+        resolve({ ok: true, savedAt: new Date().toISOString() });
+      } else {
+        reject(new Error('No data to save'));
+      }
+    }, ms);
+  });
+}
 
 // Shrink a chosen image and return it as a small JPEG data URL (so it fits in localStorage)
 function resizeImage(file, maxSide, quality) {
